@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 @Entity
 public class OrdenCompra {
@@ -14,7 +16,8 @@ public class OrdenCompra {
 	private long idOrdenCompra;
 	private long numeroOrdenCompra;
 	private Date fechaOrdenCompra;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
 	@OneToOne
 	private DetalleOrdenCompra detalleOrdenCompra;

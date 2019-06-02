@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 @Entity
 public class Pedido {
@@ -16,7 +18,8 @@ public class Pedido {
 	//También se puede guardar como String con un formato predefinido dd/MM/yyyy
 	//Más fácil de comparar
 	private Date fechaPedido;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
 	@OneToOne
 	private DetallePedido detallePedido;

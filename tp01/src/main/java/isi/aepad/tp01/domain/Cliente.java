@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cliente {
 	@Id
@@ -16,23 +18,26 @@ public class Cliente {
 	private long idCliente;
 	private String nombre;
 	private String localidad;
-	@OneToMany(mappedBy="Pedido")
+	@OneToMany(mappedBy="idPedido")
+	@JsonIgnore
 	private List<Pedido> pedidosRealizados;
 	@OneToOne
 	private MedioDePago medioDePago;
-	//private <No se que tipo de dato es> pagosRealizados;
+	@OneToMany(mappedBy="idOrdenCompra")
+	@JsonIgnore
+	private List<OrdenCompra> pagosRealizados;
 	private int puntosAcumulados;
 	
 		
 	public Cliente(long idCliente, String nombre, String localidad, List<Pedido> pedidosRealizados,
-			MedioDePago medioDePago,/* pagosRealizados ,*/ int puntosAcumulados) {
+			MedioDePago medioDePago,List<OrdenCompra> pagosRealizados, int puntosAcumulados) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.localidad = localidad;
 		this.pedidosRealizados = pedidosRealizados;
 		this.medioDePago = medioDePago;
-		//this. pagosRealizados = pagosRealizados;
+		this. pagosRealizados = pagosRealizados;
 		this.puntosAcumulados = puntosAcumulados;
 	}
 
