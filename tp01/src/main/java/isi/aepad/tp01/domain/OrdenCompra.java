@@ -2,11 +2,21 @@ package isi.aepad.tp01.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+@Entity
 public class OrdenCompra {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idOrdenCompra;
 	private long numeroOrdenCompra;
 	private Date fechaOrdenCompra;
+	@OneToOne
 	private Cliente cliente;
+	@OneToOne
 	private DetalleOrdenCompra detalleOrdenCompra;
 	
 	

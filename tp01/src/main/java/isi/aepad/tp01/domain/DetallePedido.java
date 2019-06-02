@@ -1,6 +1,13 @@
 package isi.aepad.tp01.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class DetallePedido {
+	@Id
+	@OneToOne
 	private Producto producto;
 	private int cantidad;
 	private double precio;
