@@ -25,18 +25,18 @@ public class UsuarioResource {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@GetMapping("proyecto")
+	@GetMapping("usuario")
 	public ResponseEntity<List<Usuario>> buscar() {
 		return  new ResponseEntity<List<Usuario>>(this.usuarioService.buscarTodos(), HttpStatus.OK);
 	}
 
 	
-	@GetMapping("proyecto/{id}")
+	@GetMapping("usuario/{id}")
 	public ResponseEntity<Usuario> buscar(@RequestParam(value="id") String idUsuario) {
 		return  new ResponseEntity<Usuario>(this.usuarioService.buscarPorId(idUsuario), HttpStatus.OK);
 	}
 	
-	@PostMapping("proyecto")
+	@PostMapping("usuario")
 	public ResponseEntity<Usuario> crear(@RequestBody Usuario u,UriComponentsBuilder builder) {
 		Usuario creado = this.usuarioService.guardar(u);
         if (creado == null) {
@@ -47,13 +47,13 @@ public class UsuarioResource {
         return new ResponseEntity<Usuario>(creado,headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("proyecto")
+	@PutMapping("usuario")
 	public ResponseEntity<Usuario> actualizar(@RequestBody Usuario u,UriComponentsBuilder builder) {
 		Usuario actualizar = this.usuarioService.guardar(u);
         return new ResponseEntity<Usuario>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("proyecto/{id}")
+	@DeleteMapping("usuario/{id}")
 	public ResponseEntity<Void> borrar(@RequestParam(value="id") String idUsuario) {
         this.usuarioService.borrar(idUsuario);
         return new ResponseEntity<Void>(HttpStatus.OK);

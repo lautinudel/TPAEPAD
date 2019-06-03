@@ -25,18 +25,18 @@ public class ProductoResource {
 	@Autowired
 	private ProductoService productoService;
 
-	@GetMapping("proyecto")
+	@GetMapping("producto")
 	public ResponseEntity<List<Producto>> buscar() {
 		return  new ResponseEntity<List<Producto>>(this.productoService.buscarTodos(), HttpStatus.OK);
 	}
 
 	
-	@GetMapping("proyecto/{id}")
+	@GetMapping("producto/{id}")
 	public ResponseEntity<Producto> buscar(@RequestParam(value="id") long idProducto) {
 		return  new ResponseEntity<Producto>(this.productoService.buscarPorId(idProducto), HttpStatus.OK);
 	}
 	
-	@PostMapping("proyecto")
+	@PostMapping("producto")
 	public ResponseEntity<Producto> crear(@RequestBody Producto p,UriComponentsBuilder builder) {
 		Producto creado = this.productoService.guardar(p);
         if (creado == null) {
@@ -47,13 +47,13 @@ public class ProductoResource {
         return new ResponseEntity<Producto>(creado,headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("proyecto")
+	@PutMapping("producto")
 	public ResponseEntity<Producto> actualizar(@RequestBody Producto p,UriComponentsBuilder builder) {
 		Producto actualizar = this.productoService.guardar(p);
         return new ResponseEntity<Producto>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("proyecto/{id}")
+	@DeleteMapping("producto/{id}")
 	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idProducto) {
         this.productoService.borrar(idProducto);
         return new ResponseEntity<Void>(HttpStatus.OK);

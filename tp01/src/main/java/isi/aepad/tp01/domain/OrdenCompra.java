@@ -1,6 +1,7 @@
 package isi.aepad.tp01.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class OrdenCompra {
 	@Id
@@ -16,20 +19,20 @@ public class OrdenCompra {
 	private long idOrdenCompra;
 	private long numeroOrdenCompra;
 	private Date fechaOrdenCompra;
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "idCliente")
-	private Cliente cliente;
-	@OneToOne
-	private DetalleOrdenCompra detalleOrdenCompra;
+	private Cliente cliente;*/
+	@JsonIgnore
+	private List<DetalleOrdenCompra> detalleOrdenCompra;
 	
 	
-	public OrdenCompra(long idOrdenCompra, long numeroOrdenCompra, Date fechaOrdenCompra, Cliente cliente,
-			DetalleOrdenCompra detalleOrdenCompra) {
+	public OrdenCompra(long idOrdenCompra, long numeroOrdenCompra, Date fechaOrdenCompra, /*Cliente cliente,*/
+			List<DetalleOrdenCompra> detalleOrdenCompra) {
 		super();
 		this.idOrdenCompra = idOrdenCompra;
 		this.numeroOrdenCompra = numeroOrdenCompra;
 		this.fechaOrdenCompra = fechaOrdenCompra;
-		this.cliente = cliente;
+		//this.cliente = cliente;
 		this.detalleOrdenCompra = detalleOrdenCompra;
 	}
 
@@ -57,20 +60,20 @@ public class OrdenCompra {
 		this.fechaOrdenCompra = fechaOrdenCompra;
 	}
 
-	public Cliente getCliente() {
+	/*public Cliente getCliente() {
 		return cliente;
 	}
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
+	}*/
 
-	public DetalleOrdenCompra getDetallePedido() {
+	public List<DetalleOrdenCompra> getDetallePedido() {
 		return detalleOrdenCompra;
 	}
 
 
-	public void setDetallePedido(DetalleOrdenCompra detallePedido) {
+	public void setDetallePedido(List<DetalleOrdenCompra> detallePedido) {
 		this.detalleOrdenCompra = detallePedido;
 	}	
 }

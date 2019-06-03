@@ -1,6 +1,7 @@
 package isi.aepad.tp01.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Pedido {
 	@Id
@@ -21,10 +24,10 @@ public class Pedido {
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
-	@OneToOne
-	private DetallePedido detallePedido;
+	@JsonIgnore
+	private List<DetallePedido> detallePedido;
 	
-	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, DetallePedido detallePedido) {
+	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, List<DetallePedido> detallePedido) {
 		super();
 		this.idPedido = id;
 		this.numeroPedido = numeroPedido;
@@ -65,15 +68,12 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public DetallePedido getDetallePedido() {
+	public List<DetallePedido> getDetallePedido() {
 		return detallePedido;
 	}
 
-	public void setDetallePedido(DetallePedido detallePedido) {
+	public void setDetallePedido(List<DetallePedido> detallePedido) {
 		this.detallePedido = detallePedido;
-	}
-	
-	
-	
+	}	
 	
 }

@@ -23,14 +23,13 @@ public class Cliente {
 	private List<Pedido> pedidosRealizados;
 	@OneToOne
 	private MedioDePago medioDePago;
-	@OneToMany(mappedBy="idOrdenCompra")
 	@JsonIgnore
-	private List<OrdenCompra> pagosRealizados;
+	private List<Pago> pagosRealizados;
 	private int puntosAcumulados;
 	
 		
 	public Cliente(long idCliente, String nombre, String localidad, List<Pedido> pedidosRealizados,
-			MedioDePago medioDePago,List<OrdenCompra> pagosRealizados, int puntosAcumulados) {
+			MedioDePago medioDePago,List<Pago> pagosRealizados, int puntosAcumulados) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;

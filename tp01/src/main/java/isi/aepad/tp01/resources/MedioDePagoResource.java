@@ -25,18 +25,18 @@ public class MedioDePagoResource {
 	@Autowired
 	private MedioDePagoService medioDePagoService;
 
-	@GetMapping("proyecto")
+	@GetMapping("medioDePago")
 	public ResponseEntity<List<MedioDePago>> buscar() {
 		return  new ResponseEntity<List<MedioDePago>>(this.medioDePagoService.buscarTodos(), HttpStatus.OK);
 	}
 
 	
-	@GetMapping("proyecto/{id}")
+	@GetMapping("medioDePago/{id}")
 	public ResponseEntity<MedioDePago> buscar(@RequestParam(value="id") long idMedioDePago) {
 		return  new ResponseEntity<MedioDePago>(this.medioDePagoService.buscarPorId(idMedioDePago), HttpStatus.OK);
 	}
 	
-	@PostMapping("proyecto")
+	@PostMapping("medioDePago")
 	public ResponseEntity<MedioDePago> crear(@RequestBody MedioDePago m,UriComponentsBuilder builder) {
 		MedioDePago creado = this.medioDePagoService.guardar(m);
         if (creado == null) {
@@ -47,13 +47,13 @@ public class MedioDePagoResource {
         return new ResponseEntity<MedioDePago>(creado,headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("proyecto")
+	@PutMapping("medioDePago")
 	public ResponseEntity<MedioDePago> actualizar(@RequestBody MedioDePago m,UriComponentsBuilder builder) {
 		MedioDePago actualizar = this.medioDePagoService.guardar(m);
         return new ResponseEntity<MedioDePago>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("proyecto/{id}")
+	@DeleteMapping("medioDePago/{id}")
 	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idMedioDePago) {
         this.medioDePagoService.borrar(idMedioDePago);
         return new ResponseEntity<Void>(HttpStatus.OK);

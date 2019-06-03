@@ -26,18 +26,18 @@ public class LocalidadResource {
 	@Autowired
 	private LocalidadService localidadService;
 
-	@GetMapping("proyecto")
+	@GetMapping("localidad")
 	public ResponseEntity<List<Localidad>> buscar() {
 		return  new ResponseEntity<List<Localidad>>(this.localidadService.buscarTodos(), HttpStatus.OK);
 	}
 
 	
-	@GetMapping("proyecto/{id}")
+	@GetMapping("localidad/{id}")
 	public ResponseEntity<Localidad> buscar(@RequestParam(value="id") long idLocalidad) {
 		return  new ResponseEntity<Localidad>(this.localidadService.buscarPorId(idLocalidad), HttpStatus.OK);
 	}
 	
-	@PostMapping("proyecto")
+	@PostMapping("localidad")
 	public ResponseEntity<Localidad> crear(@RequestBody Localidad l,UriComponentsBuilder builder) {
 		Localidad creado = this.localidadService.guardar(l);
         if (creado == null) {
@@ -48,13 +48,13 @@ public class LocalidadResource {
         return new ResponseEntity<Localidad>(creado,headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("proyecto")
+	@PutMapping("localidad")
 	public ResponseEntity<Localidad> actualizar(@RequestBody Localidad l,UriComponentsBuilder builder) {
 		Localidad actualizar = this.localidadService.guardar(l);
         return new ResponseEntity<Localidad>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("proyecto/{id}")
+	@DeleteMapping("localidad/{id}")
 	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idLocalidad) {
         this.localidadService.borrar(idLocalidad);
         return new ResponseEntity<Void>(HttpStatus.OK);

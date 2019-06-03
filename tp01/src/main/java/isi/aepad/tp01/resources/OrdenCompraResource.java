@@ -25,18 +25,18 @@ public class OrdenCompraResource {
 	@Autowired
 	private OrdenCompraService ordenCompraService;
 
-	@GetMapping("proyecto")
+	@GetMapping("ordenCompra")
 	public ResponseEntity<List<OrdenCompra>> buscar() {
 		return  new ResponseEntity<List<OrdenCompra>>(this.ordenCompraService.buscarTodos(), HttpStatus.OK);
 	}
 
 	
-	@GetMapping("proyecto/{id}")
+	@GetMapping("ordenCompra/{id}")
 	public ResponseEntity<OrdenCompra> buscar(@RequestParam(value="id") long idOrdenCompra) {
 		return  new ResponseEntity<OrdenCompra>(this.ordenCompraService.buscarPorId(idOrdenCompra), HttpStatus.OK);
 	}
 	
-	@PostMapping("proyecto")
+	@PostMapping("ordenCompra")
 	public ResponseEntity<OrdenCompra> crear(@RequestBody OrdenCompra o,UriComponentsBuilder builder) {
 		OrdenCompra creado = this.ordenCompraService.guardar(o);
         if (creado == null) {
@@ -47,13 +47,13 @@ public class OrdenCompraResource {
         return new ResponseEntity<OrdenCompra>(creado,headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("proyecto")
+	@PutMapping("ordenCompra")
 	public ResponseEntity<OrdenCompra> actualizar(@RequestBody OrdenCompra o,UriComponentsBuilder builder) {
 		OrdenCompra actualizar = this.ordenCompraService.guardar(o);
         return new ResponseEntity<OrdenCompra>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("proyecto/{id}")
+	@DeleteMapping("ordenCompra/{id}")
 	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idOrdenCompra) {
         this.ordenCompraService.borrar(idOrdenCompra);
         return new ResponseEntity<Void>(HttpStatus.OK);

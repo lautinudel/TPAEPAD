@@ -25,18 +25,18 @@ public class PedidoResource {
 	@Autowired
 	private PedidoService pedidoService;
 
-	@GetMapping("proyecto")
+	@GetMapping("pedido")
 	public ResponseEntity<List<Pedido>> buscar() {
 		return  new ResponseEntity<List<Pedido>>(this.pedidoService.buscarTodos(), HttpStatus.OK);
 	}
 
 	
-	@GetMapping("proyecto/{id}")
+	@GetMapping("pedido/{id}")
 	public ResponseEntity<Pedido> buscar(@RequestParam(value="id") long idPedido) {
 		return  new ResponseEntity<Pedido>(this.pedidoService.buscarPorId(idPedido), HttpStatus.OK);
 	}
 	
-	@PostMapping("proyecto")
+	@PostMapping("pedido")
 	public ResponseEntity<Pedido> crear(@RequestBody Pedido p,UriComponentsBuilder builder) {
 		Pedido creado = this.pedidoService.guardar(p);
         if (creado == null) {
@@ -47,13 +47,13 @@ public class PedidoResource {
         return new ResponseEntity<Pedido>(creado,headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("proyecto")
+	@PutMapping("pedido")
 	public ResponseEntity<Pedido> actualizar(@RequestBody Pedido p,UriComponentsBuilder builder) {
 		Pedido actualizar = this.pedidoService.guardar(p);
         return new ResponseEntity<Pedido>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("proyecto/{id}")
+	@DeleteMapping("pedido/{id}")
 	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idPedido) {
         this.pedidoService.borrar(idPedido);
         return new ResponseEntity<Void>(HttpStatus.OK);
