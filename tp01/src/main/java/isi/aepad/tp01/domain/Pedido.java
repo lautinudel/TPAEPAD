@@ -24,10 +24,11 @@ public class Pedido {
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
-	@JsonIgnore
-	private List<DetallePedido> detallePedido;
+	@ManyToOne
+	@JoinColumn(name = "idDetallePedido")
+	private DetallePedido detallePedido;
 	
-	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, List<DetallePedido> detallePedido) {
+	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, DetallePedido detallePedido) {
 		super();
 		this.idPedido = id;
 		this.numeroPedido = numeroPedido;
@@ -68,11 +69,11 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public List<DetallePedido> getDetallePedido() {
+	public DetallePedido getDetallePedido() {
 		return detallePedido;
 	}
 
-	public void setDetallePedido(List<DetallePedido> detallePedido) {
+	public void setDetallePedido(DetallePedido detallePedido) {
 		this.detallePedido = detallePedido;
 	}	
 	

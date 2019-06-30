@@ -3,11 +3,12 @@ package isi.aepad.tp01.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import isi.aepad.tp01.domain.Pago;
 import isi.aepad.tp01.repository.PagoRepository;
 import isi.aepad.tp01.service.PagoService;
-
+@Service
 public class PagoServiceDefault implements PagoService {
 	
 	@Autowired

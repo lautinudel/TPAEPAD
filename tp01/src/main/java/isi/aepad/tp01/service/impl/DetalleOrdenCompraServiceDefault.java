@@ -3,11 +3,12 @@ package isi.aepad.tp01.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import isi.aepad.tp01.domain.DetalleOrdenCompra;
 import isi.aepad.tp01.repository.DetalleOrdenCompraRepository;
 import isi.aepad.tp01.service.DetalleOrdenCompraService;
-
+@Service
 public class DetalleOrdenCompraServiceDefault implements DetalleOrdenCompraService {
 
 	@Autowired

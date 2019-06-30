@@ -22,12 +22,13 @@ public class OrdenCompra {
 	/*@ManyToOne
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;*/
-	@JsonIgnore
-	private List<DetalleOrdenCompra> detalleOrdenCompra;
+	@ManyToOne
+	@JoinColumn(name = "idDetalleOrdenCompra")
+	private DetalleOrdenCompra detalleOrdenCompra;
 	
 	
 	public OrdenCompra(long idOrdenCompra, long numeroOrdenCompra, Date fechaOrdenCompra, /*Cliente cliente,*/
-			List<DetalleOrdenCompra> detalleOrdenCompra) {
+			DetalleOrdenCompra detalleOrdenCompra) {
 		super();
 		this.idOrdenCompra = idOrdenCompra;
 		this.numeroOrdenCompra = numeroOrdenCompra;
@@ -68,12 +69,12 @@ public class OrdenCompra {
 		this.cliente = cliente;
 	}*/
 
-	public List<DetalleOrdenCompra> getDetallePedido() {
+	public DetalleOrdenCompra getDetallePedido() {
 		return detalleOrdenCompra;
 	}
 
 
-	public void setDetallePedido(List<DetalleOrdenCompra> detallePedido) {
+	public void setDetallePedido(DetalleOrdenCompra detallePedido) {
 		this.detalleOrdenCompra = detallePedido;
 	}	
 }

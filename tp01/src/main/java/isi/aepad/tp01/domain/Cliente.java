@@ -18,11 +18,12 @@ public class Cliente {
 	private long idCliente;
 	private String nombre;
 	private String localidad;
-	@OneToMany(mappedBy="idPedido")
+	@OneToMany(targetEntity=Pedido.class, mappedBy="cliente")
 	@JsonIgnore
-	private List<Pedido> pedidosRealizados;
+	private List<Pedido> pedidosRealizados ;
 	@OneToOne
 	private MedioDePago medioDePago;
+	@OneToMany(targetEntity=Pago.class, mappedBy="cliente")
 	@JsonIgnore
 	private List<Pago> pagosRealizados;
 	private int puntosAcumulados;
