@@ -18,6 +18,10 @@ public class DetallePedido {
 	private double total;
 	
 	
+	
+	public DetallePedido() {
+	}
+
 	public DetallePedido(Producto producto, int cantidad, double precio, double total) {
 		super();
 		this.producto = producto;

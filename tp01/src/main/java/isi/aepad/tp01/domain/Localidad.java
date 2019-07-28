@@ -13,6 +13,9 @@ public class Localidad {
 	private String descripcion;
 	
 	
+	public Localidad() {
+	}
+
 	public Localidad(long id, String descripcion) {
 		super();
 		this.idLocalidad = id;

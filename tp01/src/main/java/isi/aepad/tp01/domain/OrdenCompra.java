@@ -27,6 +27,10 @@ public class OrdenCompra {
 	private DetalleOrdenCompra detalleOrdenCompra;
 	
 	
+	
+	public OrdenCompra() {
+	}
+
 	public OrdenCompra(long idOrdenCompra, long numeroOrdenCompra, Date fechaOrdenCompra, /*Cliente cliente,*/
 			DetalleOrdenCompra detalleOrdenCompra) {
 		super();

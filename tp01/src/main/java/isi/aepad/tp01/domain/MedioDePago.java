@@ -13,6 +13,9 @@ public class MedioDePago {
 	private String descripcion;
 	
 	
+	public MedioDePago() {
+	}
+
 	public MedioDePago(long id, String descripcion) {
 		super();
 		this.idMedioPago = id;

@@ -28,6 +28,9 @@ public class Cliente {
 	private List<Pago> pagosRealizados;
 	private int puntosAcumulados;
 	
+	public Cliente() {
+		
+	}
 		
 	public Cliente(long idCliente, String nombre, String localidad, List<Pedido> pedidosRealizados,
 			MedioDePago medioDePago,List<Pago> pagosRealizados, int puntosAcumulados) {

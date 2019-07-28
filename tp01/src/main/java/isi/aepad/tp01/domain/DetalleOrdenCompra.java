@@ -18,6 +18,9 @@ public class DetalleOrdenCompra {
 	private double total;
 	
 	
+	public DetalleOrdenCompra() {
+	}
+
 	public DetalleOrdenCompra(Producto producto, int cantidad, double precio, double total) {
 		super();
 		this.producto = producto;
