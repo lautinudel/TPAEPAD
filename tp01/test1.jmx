@@ -248,8 +248,8 @@
                   <stringProp name="Argument.value">{&#xd;
 	&quot;id_cliente&quot;:&quot;&quot;,&#xd;
 	&quot;nombre&quot;:&quot;Cliente ... ${NRO_CLIENTE}&quot;,&#xd;
-	&quot;localidad&quot;:&quot;${__Random(1,500)}&quot;,&#xd;
-	&quot;medioDePago&quot;:&quot;${__Random(1,3)}&quot;,&#xd;
+	&quot;localidad&quot;:&quot;${idLocalidad}&quot;,&#xd;
+	&quot;medioDePago&quot;:&quot;${idMedioPago}&quot;,&#xd;
 	&quot;puntosAcumulados&quot;: 0&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
