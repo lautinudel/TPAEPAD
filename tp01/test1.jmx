@@ -40,7 +40,7 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </SetupThreadGroup>
       <hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Localidades" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Localidades" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">500</stringProp>
         </LoopController>
@@ -100,7 +100,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Medio de Pago" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Medio de Pago" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">3</stringProp>
         </LoopController>
@@ -161,7 +161,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Producto" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Producto" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">5000</stringProp>
         </LoopController>
@@ -227,7 +227,7 @@
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller Cliente" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">5000</stringProp>
         </LoopController>
         <hashTree>
           <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter_Cliente" enabled="true">
@@ -248,8 +248,8 @@
                   <stringProp name="Argument.value">{&#xd;
 	&quot;id_cliente&quot;:&quot;&quot;,&#xd;
 	&quot;nombre&quot;:&quot;Cliente ... ${NRO_CLIENTE}&quot;,&#xd;
-	&quot;localidad&quot;:&quot;${__Random(1,500)}&quot;,&#xd;
-	&quot;medioDePago&quot;:&quot;${__Random(1,3)}&quot;,&#xd;
+	&quot;localidad&quot;:{&quot;id&quot;:${__Random(1,500)}},&#xd;
+	&quot;medioDePago&quot;:{&quot;id&quot;:${__Random(1,3)}},&#xd;
 	&quot;puntosAcumulados&quot;: 0&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>

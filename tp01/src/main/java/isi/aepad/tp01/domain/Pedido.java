@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,17 +19,15 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPedido;
 	private long numeroPedido;
-	//También se puede guardar como String con un formato predefinido dd/MM/yyyy
-	//Más fácil de comparar
 	private Date fechaPedido;
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
-	@ManyToOne
-	@JoinColumn(name = "idDetallePedido")
-	private DetallePedido detallePedido;
+	@OneToMany(targetEntity=DetallePedido.class, mappedBy="pedido")
+	@JsonIgnore
+	private List<DetallePedido> detallePedido;
 	
-	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, DetallePedido detallePedido) {
+	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, List<DetallePedido> detallePedido) {
 		super();
 		this.idPedido = id;
 		this.numeroPedido = numeroPedido;
@@ -69,11 +68,11 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public DetallePedido getDetallePedido() {
+	public List<DetallePedido> getDetallePedido() {
 		return detallePedido;
 	}
 
-	public void setDetallePedido(DetallePedido detallePedido) {
+	public void setDetallePedido(List<DetallePedido> detallePedido) {
 		this.detallePedido = detallePedido;
 	}	
 	

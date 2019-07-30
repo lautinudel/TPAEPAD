@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,12 +20,12 @@ public class OrdenCompra {
 	private long idOrdenCompra;
 	private long numeroOrdenCompra;
 	private Date fechaOrdenCompra;
-	/*@ManyToOne
-	@JoinColumn(name = "idCliente")
-	private Cliente cliente;*/
 	@ManyToOne
-	@JoinColumn(name = "idDetalleOrdenCompra")
-	private DetalleOrdenCompra detalleOrdenCompra;
+	@JoinColumn(name = "idCliente")
+	private Cliente cliente;
+	@OneToMany(targetEntity=DetalleOrdenCompra.class, mappedBy="ordenCompra")
+	@JsonIgnore
+	private List<DetalleOrdenCompra> detalleOrdenCompra;
 	
 	
 	
@@ -32,12 +33,12 @@ public class OrdenCompra {
 	}
 
 	public OrdenCompra(long idOrdenCompra, long numeroOrdenCompra, Date fechaOrdenCompra, /*Cliente cliente,*/
-			DetalleOrdenCompra detalleOrdenCompra) {
+			List<DetalleOrdenCompra> detalleOrdenCompra) {
 		super();
 		this.idOrdenCompra = idOrdenCompra;
 		this.numeroOrdenCompra = numeroOrdenCompra;
 		this.fechaOrdenCompra = fechaOrdenCompra;
-		//this.cliente = cliente;
+		this.cliente = cliente;
 		this.detalleOrdenCompra = detalleOrdenCompra;
 	}
 
@@ -65,20 +66,20 @@ public class OrdenCompra {
 		this.fechaOrdenCompra = fechaOrdenCompra;
 	}
 
-	/*public Cliente getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}*/
-
-	public DetalleOrdenCompra getDetallePedido() {
+	}
+	
+	public List<DetalleOrdenCompra> getDetallePedido() {
 		return detalleOrdenCompra;
 	}
 
 
-	public void setDetallePedido(DetalleOrdenCompra detallePedido) {
+	public void setDetallePedido(List<DetalleOrdenCompra> detallePedido) {
 		this.detalleOrdenCompra = detallePedido;
 	}	
 }

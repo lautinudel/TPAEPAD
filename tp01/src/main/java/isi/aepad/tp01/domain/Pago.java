@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -11,12 +13,15 @@ public class Pago {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPago;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "idMedioDePago")
 	private MedioDePago medioPago;
 	private double monto;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "idPedido")
 	private Pedido pedido;
 	//private boolean pagoRelizdo;
 	

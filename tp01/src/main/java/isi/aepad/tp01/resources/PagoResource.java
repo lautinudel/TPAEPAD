@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +32,8 @@ public class PagoResource {
 	}
 
 	
-	@GetMapping("pago/{id}")
-	public ResponseEntity<Pago> buscar(@RequestParam(value="id") long idPago) {
+	@GetMapping("pago/{idPago}")
+	public ResponseEntity<Pago> buscar(@PathVariable(required=false) long idPago) {
 		return  new ResponseEntity<Pago>(this.pagoService.buscarPorId(idPago), HttpStatus.OK);
 	}
 	

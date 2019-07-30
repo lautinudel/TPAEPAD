@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +33,8 @@ public class ClienteResource {
 	}
 
 	
-	@GetMapping("cliente/{id}")
-	public ResponseEntity<Cliente> buscar(@RequestParam(value="id") long idCliente) {
+	@GetMapping("cliente/{idCliente}")
+	public ResponseEntity<Cliente> buscar(@PathVariable(required=false) long idCliente) {
 		return  new ResponseEntity<Cliente>(this.clienteService.buscarPorId(idCliente), HttpStatus.OK);
 	}
 	
