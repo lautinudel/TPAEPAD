@@ -45,7 +45,7 @@ public class ClienteResource {
         	return new ResponseEntity<Cliente>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getIdCliente()).toUri());
+        headers.setLocation(builder.path("/api/cliente/{idCliente}").buildAndExpand(creado.getIdCliente()).toUri());
         return new ResponseEntity<Cliente>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -55,8 +55,8 @@ public class ClienteResource {
         return new ResponseEntity<Cliente>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("cliente/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idCliente) {
+	@DeleteMapping("cliente/{idCliente}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idCliente") long idCliente) {
         this.clienteService.borrar(idCliente);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

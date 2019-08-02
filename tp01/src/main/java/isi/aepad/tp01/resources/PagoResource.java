@@ -44,7 +44,7 @@ public class PagoResource {
         	return new ResponseEntity<Pago>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getIdPago()).toUri());
+        headers.setLocation(builder.path("/api/pago/{idPago}").buildAndExpand(creado.getIdPago()).toUri());
         return new ResponseEntity<Pago>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -54,8 +54,8 @@ public class PagoResource {
         return new ResponseEntity<Pago>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("pago/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idPago) {
+	@DeleteMapping("pago/{idPago}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idPago") long idPago) {
         this.pagoService.borrar(idPago);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

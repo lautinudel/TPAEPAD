@@ -44,7 +44,7 @@ public class UsuarioResource {
         	return new ResponseEntity<Usuario>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getUsername()).toUri());
+        headers.setLocation(builder.path("/api/usuario/{idUsuario}").buildAndExpand(creado.getUsername()).toUri());
         return new ResponseEntity<Usuario>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -54,8 +54,8 @@ public class UsuarioResource {
         return new ResponseEntity<Usuario>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("usuario/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") String idUsuario) {
+	@DeleteMapping("usuario/{idUsuario}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idUsuario") String idUsuario) {
         this.usuarioService.borrar(idUsuario);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

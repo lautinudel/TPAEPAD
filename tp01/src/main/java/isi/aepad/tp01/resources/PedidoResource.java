@@ -44,7 +44,7 @@ public class PedidoResource {
         	return new ResponseEntity<Pedido>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getId()).toUri());
+        headers.setLocation(builder.path("/api/pedido/{idPedido}").buildAndExpand(creado.getId()).toUri());
         return new ResponseEntity<Pedido>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -54,8 +54,8 @@ public class PedidoResource {
         return new ResponseEntity<Pedido>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("pedido/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idPedido) {
+	@DeleteMapping("pedido/{idPedido}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idPedido") long idPedido) {
         this.pedidoService.borrar(idPedido);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

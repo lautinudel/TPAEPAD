@@ -18,6 +18,7 @@ public class OrdenCompra {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idOrdenCompra;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long numeroOrdenCompra;
 	private Date fechaOrdenCompra;
 	@ManyToOne

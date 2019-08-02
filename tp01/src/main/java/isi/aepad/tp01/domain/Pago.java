@@ -25,11 +25,16 @@ public class Pago {
 	private Pedido pedido;
 	//private boolean pagoRelizdo;
 	
+	
+	
 	public Pago(MedioDePago medioPago, double monto, Cliente cliente) {
 		super();
 		this.medioPago = medioPago;
 		this.monto = monto;
 		this.cliente = cliente;
+	}
+
+	public Pago() {
 	}
 
 	public MedioDePago getMedioPago() {

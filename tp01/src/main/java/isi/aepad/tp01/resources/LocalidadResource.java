@@ -45,7 +45,7 @@ public class LocalidadResource {
         	return new ResponseEntity<Localidad>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getId()).toUri());
+        headers.setLocation(builder.path("/api/localidad/{idLocalidad}").buildAndExpand(creado.getId()).toUri());
         return new ResponseEntity<Localidad>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -55,8 +55,8 @@ public class LocalidadResource {
         return new ResponseEntity<Localidad>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("localidad/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idLocalidad) {
+	@DeleteMapping("localidad/{idLocalidad}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idLocalidad") long idLocalidad) {
         this.localidadService.borrar(idLocalidad);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

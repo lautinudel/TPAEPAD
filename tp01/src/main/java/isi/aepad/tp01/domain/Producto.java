@@ -14,7 +14,9 @@ public class Producto {
 	private Double precio;
 	private int stock;
 	
-	
+	public Producto(){
+		
+	}
 	
 	public Producto(int id, String descripcion, Double precio, int stock) {
 		super();

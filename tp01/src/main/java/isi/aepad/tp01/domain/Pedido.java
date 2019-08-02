@@ -3,6 +3,7 @@ package isi.aepad.tp01.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,16 +19,22 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPedido;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long numeroPedido;
-	private Date fechaPedido;
-	@ManyToOne
+	private String fechaPedido;
+	@ManyToOne//(cascade = {CascadeType.ALL})//
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
 	@OneToMany(targetEntity=DetallePedido.class, mappedBy="pedido")
 	@JsonIgnore
 	private List<DetallePedido> detallePedido;
 	
-	public Pedido(long id, long numeroPedido, Date fecha, Cliente cliente, List<DetallePedido> detallePedido) {
+	
+	
+	public Pedido() {
+	}
+
+	public Pedido(long id, long numeroPedido, String fecha, Cliente cliente, List<DetallePedido> detallePedido) {
 		super();
 		this.idPedido = id;
 		this.numeroPedido = numeroPedido;
@@ -52,11 +59,11 @@ public class Pedido {
 		this.numeroPedido = numeroPedido;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fechaPedido;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fechaPedido = fecha;
 	}
 

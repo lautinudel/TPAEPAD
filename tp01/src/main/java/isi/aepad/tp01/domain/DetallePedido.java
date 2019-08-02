@@ -20,7 +20,7 @@ public class DetallePedido {
 	private double precio;
 	private double total;
 	@ManyToOne
-	@JoinColumn(name="idPedido")
+	@JoinColumn(name="id")
 	private Pedido pedido;
 	
 	

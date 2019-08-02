@@ -44,7 +44,7 @@ public class ProductoResource {
         	return new ResponseEntity<Producto>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getId()).toUri());
+        headers.setLocation(builder.path("/api/producto/{idProducto}").buildAndExpand(creado.getId()).toUri());
         return new ResponseEntity<Producto>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -54,8 +54,8 @@ public class ProductoResource {
         return new ResponseEntity<Producto>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("producto/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idProducto) {
+	@DeleteMapping("producto/{idProducto}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idProducto") long idProducto) {
         this.productoService.borrar(idProducto);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

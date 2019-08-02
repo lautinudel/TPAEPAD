@@ -44,7 +44,7 @@ public class OrdenCompraResource {
         	return new ResponseEntity<OrdenCompra>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getIdOrdenCompra()).toUri());
+        headers.setLocation(builder.path("/api/ordenCompra/{idOrdenCompra}").buildAndExpand(creado.getIdOrdenCompra()).toUri());
         return new ResponseEntity<OrdenCompra>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -54,8 +54,8 @@ public class OrdenCompraResource {
         return new ResponseEntity<OrdenCompra>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("ordenCompra/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idOrdenCompra) {
+	@DeleteMapping("ordenCompra/{idOrdenCompra}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idOrdenCompra") long idOrdenCompra) {
         this.ordenCompraService.borrar(idOrdenCompra);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}

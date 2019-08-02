@@ -44,7 +44,7 @@ public class MedioDePagoResource {
         	return new ResponseEntity<MedioDePago>(HttpStatus.NO_CONTENT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/api/proyecto/{id}").buildAndExpand(creado.getId()).toUri());
+        headers.setLocation(builder.path("/api/medioDePago/{idMedioDePago}").buildAndExpand(creado.getId()).toUri());
         return new ResponseEntity<MedioDePago>(creado,headers, HttpStatus.CREATED);
 	}
 	
@@ -54,8 +54,8 @@ public class MedioDePagoResource {
         return new ResponseEntity<MedioDePago>(actualizar, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("medioDePago/{id}")
-	public ResponseEntity<Void> borrar(@RequestParam(value="id") long idMedioDePago) {
+	@DeleteMapping("medioDePago/{idMedioDePago}")
+	public ResponseEntity<Void> borrar(@RequestParam(value="idMedioDePago") long idMedioDePago) {
         this.medioDePagoService.borrar(idMedioDePago);
         return new ResponseEntity<Void>(HttpStatus.OK);
 	}
